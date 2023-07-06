@@ -20,7 +20,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        # configure window
+        
         self.title("UTN FRA")
        
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar", command=self.btn_mostrar_on_click)
@@ -28,7 +28,9 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        result= prompt(title= "Promt", prompt= "Ingrese un valor");
+        result= alert(title="Alert", message= "Su dato ingresado es " +result); 
+
         
     
 if __name__ == "__main__":

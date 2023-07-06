@@ -52,9 +52,48 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
+        costo_base = 15000
+        
+        match estacion:
+            case 'Invierno':
+                match destino:
+                    case 'Bariloche':
+                        tarifa_total = costo_base * 1.2
+                    case 'Cataratas', 'Cordoba':
+                        tarifa_total = costo_base * 0.9
+                    case 'Mar del plata':
+                        tarifa_total = costo_base * 0.8
+                    case _:
+                        alert('Error', 'Destino inválido')
+                        return
+            case 'Verano':
+                match destino:
+                    case 'Bariloche':
+                        tarifa_total = costo_base * 0.8
+                    case 'Cataratas', 'Cordoba':
+                        tarifa_total = costo_base * 1.1
+                    case 'Mar del plata':
+                        tarifa_total = costo_base * 1.2
+                    case _:
+                        alert('Error', 'Destino inválido')
+                        return
+            case 'Primavera', 'Otoño':
+                match destino:
+                    case 'Bariloche', 'Cataratas', 'Mar del plata':
+                        tarifa_total = costo_base * 1.1
+                    case 'Cordoba':
+                        tarifa_total = costo_base
+                    case _:
+                        alert('Error', 'Destino inválido')
+                        return
+            case _:
+                alert('Error', 'Estación inválida')
+                return
             
-    
+        alert('Tarifa Total', f'La tarifa total es: ${tarifa_total:.2f}')
+
 if __name__ == "__main__":
     app = App()
     app.mainloop()

@@ -48,13 +48,47 @@ class App(customtkinter.CTk):
         self.btn_total_iva.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
     def btn_total_on_click(self):
-        pass
+        importe1=self.txt_importe_1.get()
+        importe1_float=float(importe1)
+
+        importe2=self.txt_importe_2.get()
+        importe2_float=float(importe2)
+
+        importe3=self.txt_importe_3.get()
+        importe3_float= float(importe3)
+
+        suma_tres_productos=(importe1_float + importe2_float + importe3_float)
+        mensaje="El precio de la suma de los tres productos es de $ " + str(suma_tres_productos)
+        alert("mensaje", mensaje)
 
     def btn_promedio_on_click(self):
-        pass
+        importe1=self.txt_importe_1.get()
+        importe1_float=float(importe1)
+
+        importe2=self.txt_importe_2.get()
+        importe2_float=float(importe2)
+
+        importe3=self.txt_importe_3.get()
+        importe3_float= float(importe3)
+
+        promedio_tres_productos=(importe1_float + importe2_float + importe3_float)/3
+        mensaje="El promedio de los tres productos es de $ " + str(promedio_tres_productos)
+        alert("mensaje", mensaje)
+
 
     def btn_total_iva_on_click(self):
-        pass      
+        importe1=self.txt_importe_1.get()
+        importe1_float=float(importe1)
+
+        importe2=self.txt_importe_2.get()
+        importe2_float=float(importe2)
+
+        importe3=self.txt_importe_3.get()
+        importe3_float= float(importe3)
+
+        precio_final_iva=(importe1_float + importe2_float + importe3_float)*1.21
+        mensaje="El precio final de los tres productos con iva es de $ " + str(precio_final_iva)
+        alert("mensaje", mensaje)      
     
 if __name__ == "__main__":
     app = App()

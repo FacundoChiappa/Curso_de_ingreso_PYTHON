@@ -44,10 +44,55 @@ class App(customtkinter.CTk):
         self.lista = []
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        while True:
+            numero = prompt("" , prompt="Ingrese un número:")
+            if numero is None:  # El usuario presionó Cancelar
+                break
+            try:
+                numero = float(numero)
+                self.lista.append(numero)
+            except ValueError:
+                alert("Error", "Ingrese un número válido.")
 
     def btn_mostrar_estadisticas_on_click(self):
-        pass
+        suma_negativos = 0
+        suma_positivos = 0
+        cantidad_positivos = 0
+        cantidad_negativos = 0
+        cantidad_ceros = 0
+        minimo_negativos = float('inf')
+        maximo_positivos = float('-inf')
+        promedio_negativos = 0
+
+        for numero in self.lista:
+            if numero < 0:
+                suma_negativos += numero
+                cantidad_negativos += 1
+                if numero < minimo_negativos:
+                    minimo_negativos = numero
+            elif numero > 0:
+                suma_positivos += numero
+                cantidad_positivos += 1
+                if numero > maximo_positivos:
+                    maximo_positivos = numero
+            else:
+                cantidad_ceros += 1
+
+        if cantidad_negativos > 0:
+            promedio_negativos = suma_negativos / cantidad_negativos
+
+        estadisticas = f'''
+        Suma acumulada de los negativos: {suma_negativos}
+        Suma acumulada de los positivos: {suma_positivos}
+        Cantidad de números positivos ingresados: {cantidad_positivos}
+        Cantidad de números negativos ingresados: {cantidad_negativos}
+        Cantidad de ceros: {cantidad_ceros}
+        Mínimo de los negativos: {minimo_negativos if cantidad_negativos > 0 else 'N/A'}
+        Máximo de los positivos: {maximo_positivos if cantidad_positivos > 0 else 'N/A'}
+        Promedio de los negativos: {promedio_negativos if cantidad_negativos > 0 else 'N/A'}
+        '''
+
+        alert("Estadísticas", estadisticas)
 
 
 if __name__ == "__main__":

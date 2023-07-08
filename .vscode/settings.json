@@ -3,5 +3,6 @@
         "Curso_de_ingreso_PYTHON"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "python.analysis.typeCheckingMode": "basic"
 }

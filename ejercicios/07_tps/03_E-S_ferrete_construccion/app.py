@@ -63,7 +63,29 @@ class App(customtkinter.CTk):
         self.btn_calcular.grid(row=3, pady=10, columnspan=2, sticky="nsew")
 
     def btn_calcular_on_click(self):
-        pass
+        largo = float(self.txt_largo.get())
+        ancho = float(self.txt_ancho.get())
+
+        metros_cuadrados = largo * ancho
+        metros_lineales = (2 * largo) + (2 * ancho)
+
+        cantidad_postes_gruesos = metros_lineales // 250 + 4  # Se suman 4 postes para las esquinas
+        cantidad_postes_finos = metros_lineales // 12 - cantidad_postes_gruesos
+
+        cantidad_varillas = metros_lineales // 2
+
+        cantidad_alambre = metros_lineales * 7
+
+        mensaje = f"Metros cuadrados del terreno: {metros_cuadrados}\n"  #\n para hacer un salto de linea en el alert
+        mensaje += f"Metros lineales del perímetro: {metros_lineales}\n"
+        mensaje += f"Cantidad de postes de quebracho grueso de 2.4 mts: {cantidad_postes_gruesos}\n"
+        mensaje += f"Cantidad de postes de quebracho fino de 2.2 mts: {cantidad_postes_finos}\n"
+        mensaje += f"Cantidad de varillas: {cantidad_varillas}\n"
+        mensaje += f"Cantidad de alambre alta resistencia 17/15 (considerando 7 hilos): {cantidad_alambre}"
+
+        alert("Cálculo de Materiales", mensaje)
+
+
 
 
 if __name__ == "__main__":

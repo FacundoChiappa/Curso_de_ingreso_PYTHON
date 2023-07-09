@@ -55,24 +55,24 @@ class App(customtkinter.CTk):
         cantidad_asp_net = 0
 
         for i in range(10):
-            nombre = prompt("Ingrese el nombre del postulante:")
+            nombre = prompt("" , prompt="Ingrese el nombre del postulante:")
             if nombre is None:  # El usuario presionó Cancelar
                 break
 
-            edad = prompt("Ingrese la edad del postulante:")
+            edad = prompt("" , prompt="Ingrese la edad del postulante:")
             if edad is None:  # El usuario presionó Cancelar
                 break
             edad = int(edad)
 
-            genero = prompt("Ingrese el género del postulante (F-M-NB):")
+            genero = prompt("" , prompt="Ingrese el género del postulante (F-M-NB):")
             if genero is None:  # El usuario presionó Cancelar
                 break
 
-            tecnologia = prompt("Ingrese la tecnología del postulante (PYTHON - JS - ASP.NET):")
+            tecnologia = prompt("" , prompt="Ingrese la tecnología del postulante (PYTHON - JS - ASP.NET):")
             if tecnologia is None:  # El usuario presionó Cancelar
                 break
 
-            puesto = prompt("Ingrese el puesto del postulante (Jr - Ssr - Sr):")
+            puesto = prompt("" , prompt="Ingrese el puesto del postulante (Jr - Ssr - Sr):")
             if puesto is None:  # El usuario presionó Cancelar
                 break
 

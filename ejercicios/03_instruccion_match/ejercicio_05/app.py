@@ -36,11 +36,11 @@ class App(customtkinter.CTk):
                 hora = int(hora)
                 match hora:
                     case 7 | 8 | 9 | 10 | 11:
-                        alert("Es de mañana")
+                        alert("mensaje" , "Es de mañana")
                     case _:
-                        alert("No es de mañana")
+                        alert("Mensaje" , "No es de mañana")
             case _:
-                alert("Hora ingresada inválida")
+                alert("mensaje" , "Hora ingresada inválida")
             
 
 

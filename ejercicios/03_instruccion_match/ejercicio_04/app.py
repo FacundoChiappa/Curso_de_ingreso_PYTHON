@@ -35,12 +35,13 @@ class App(customtkinter.CTk):
     def btn_informar_on_click(self):
         selected_month = self.combobox_mes.get()
         
-        if selected_month in ['Abril', 'Junio', 'Septiembre', 'Noviembre']:
-            message = 'Este mes tiene 30 días'
-        elif selected_month == 'Febrero':
-            message = 'Este mes tiene 28 días'
-        else:
-            message = 'Este mes tiene 31 días'
+        match selected_month:
+            case 'Abril'|'Junio'|'Septiembre'|'Noviembre':
+                message = 'Este mes tiene 30 días'
+            case 'Febrero':
+                message = 'Este mes tiene 28 días'
+            case _:
+                message = 'Este mes tiene 31 días'
         
         alert('Mensaje', message)
     

@@ -45,19 +45,19 @@ class App(customtkinter.CTk):
         estacion = self.combobox_estaciones.get()
         destino = self.combobox_destino.get()
         
-        if estacion == 'Invierno' and destino == 'Bariloche':
-            mensaje = 'Se viaja'
-        elif estacion == 'Verano' and (destino == 'Mar del plata' or destino == 'Cataratas'):
-            mensaje = 'Se viaja'
-        elif estacion == 'Otoño':
-            mensaje = 'Se viaja'
-        elif estacion == 'Primavera' and destino != 'Bariloche':
-            mensaje = 'Se viaja'
-        else:
-            mensaje = 'No se viaja'
+        match (estacion, destino):
+            case ('Invierno', 'Bariloche'):
+                mensaje ='Se viaja'
+            case ('Verano', 'Mar del plata'), ('Verano', 'Cataratas'):
+                mensaje='Se viaja'
+            case ('Otoño', _):
+                mensaje='Se viaja'
+            case ('Primavera', destino) if destino != 'Bariloche':
+                mensaje='Se viaja'
+            case (_, _):
+                mensaje= 'No se viaja'
         
         alert('Información de Viaje', mensaje)
-            
     
 if __name__ == "__main__":
     app = App()

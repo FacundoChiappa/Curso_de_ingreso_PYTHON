@@ -25,9 +25,14 @@ class App(customtkinter.CTk):
         
     
     def btn_validar_letra_on_click(self):
-        pass
+        letra_ingresada= prompt("" , prompt="Ingrese U , T o N (en mayusculas obligatoriamente)")
+        
+        while(letra_ingresada!= "T" and letra_ingresada!= "U" and letra_ingresada!="N"):
+            letra_ingresada= prompt("" , "EL VALOR INGRESADO NO CUMPLE CON LOS REQUISITOS , Ingrese U , T o N (en mayusculas obligatoriamente)")    
             
-    
+        mensaje= f"Su letra es {letra_ingresada}"
+        alert("" ,mensaje )
+        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

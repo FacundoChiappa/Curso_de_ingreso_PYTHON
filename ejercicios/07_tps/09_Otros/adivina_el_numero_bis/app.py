@@ -5,24 +5,7 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 import random
 
-
-'''
-Adivina el número (v 1.0):
-Al comenzar el juego generamos un número secreto del 1 al 100, en la pantalla del juego dispondremos de un cuadro de texto 
-para ingresar un número y un botón “Verificar”, si el número ingresado es el mismo que el número secreto se dará por terminado
- el juego con un mensaje similar a este: 
-
-En esta oportunidad el juego evaluará tus aptitudes a partir de la cantidad de intentos, por lo cual se informará lo siguiente:
-    1° intento: “usted es un Psíquico”.
-	2° intento: “excelente percepción”.
-	3° intento: “Esto es suerte”.
-	4° hasta 6° intento: “Excelente técnica”.
-	Más de 6 intentos: “afortunado en el amor!!”.
-
-de no ser igual se debe informar si 
-“falta…”  para llegar al número secreto  o si 
-“se pasó…”  del número secreto.
-'''
+    # Facundo Chiappa
 
 class App(customtkinter.CTk):
     
@@ -42,11 +25,31 @@ class App(customtkinter.CTk):
         self.numero_intento = 0
         print(self.numero_secreto)
 
-
-
     def btn_mostrar_on_click(self):
-        pass
+        numero_ingresado = int(self.txt_numero.get())
+        self.numero_intento += 1
+        Titulo= "Perdiste , "
 
+        if numero_ingresado == self.numero_secreto:
+            Titulo = "Felicidades , "
+            match(self.numero_intento):
+                case 1:
+                    mensaje=f"{Titulo} Usted es un Psíquico."
+                case 2:
+                    mensaje=f"{Titulo}Excelente percepción."
+                case 3:
+                    mensaje=f"{Titulo}Esto es suerte."
+                case 4 | 5 | 6:
+                    mensaje=f"{Titulo}Excelente técnica."
+                case _:
+                    mensaje=f"{Titulo}Afortunado en el amor!!"
+        elif numero_ingresado < self.numero_secreto:
+            mensaje=f"{Titulo}Falta..."
+        else:
+            mensaje=f"{Titulo}Te pasaste..."
+        
+        self.txt_numero.delete(0 , 1000)
+        alert("" , mensaje)
 
 if __name__ == "__main__":
     app = App()

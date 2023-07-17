@@ -30,7 +30,7 @@ class App(customtkinter.CTk):
         if(numero_ingresado!= None):
             numero_ingresado_int= int(numero_ingresado)
 
-            while(numero_ingresado_int >= 9 or numero_ingresado_int <= 0):
+            while(numero_ingresado_int > 9 or numero_ingresado_int < 0):
                 numero_ingresado= prompt("" , prompt= "Clave erronea, ingrese clave devuelta")
                 if(numero_ingresado!= None):
                     numero_ingresado_int= int(numero_ingresado)

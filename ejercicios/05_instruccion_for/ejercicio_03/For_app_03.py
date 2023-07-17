@@ -29,11 +29,14 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        cantidad = self.txt_repetir.get()
+        if cantidad.isdigit():
+            cantidad = int(cantidad)
+            mensaje = "Hola UTN FRA\n" * cantidad
+            alert("Mensaje", mensaje.strip())
+        else:
+            alert("Error", "Ingrese un número válido")
 
-        
-        
-    
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

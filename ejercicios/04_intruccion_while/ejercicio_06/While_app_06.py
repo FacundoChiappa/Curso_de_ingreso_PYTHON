@@ -20,13 +20,13 @@ class App(customtkinter.CTk):
         # configure window
         self.title("UTN FRA")
         
-        self.txt_suma_acumulada = customtkinter.CTkEntry(master=self, placeholder_text="Suma acumulada")
+        self.txt_suma_acumulada = customtkinter.CTkEntry(master=self, placeholder_text="Suma acumulada") # type: ignore
         self.txt_suma_acumulada.grid(row=0, padx=20, pady=20)
 
-        self.txt_promedio = customtkinter.CTkEntry(master=self, placeholder_text="Promedio")
+        self.txt_promedio = customtkinter.CTkEntry(master=self, placeholder_text="Promedio") # type: ignore
         self.txt_promedio.grid(row=1, padx=20, pady=20)
 
-        self.btn_mostrar = customtkinter.CTkButton(master=self, text="Comenzar Ingreso", command=self.btn_comenzar_ingreso_on_click)
+        self.btn_mostrar = customtkinter.CTkButton(master=self, text="Comenzar Ingreso", command=self.btn_comenzar_ingreso_on_click) # type: ignore
         self.btn_mostrar.grid(row=2, padx=20, pady=20, columnspan=2, sticky="nsew")
 
 
@@ -36,14 +36,15 @@ class App(customtkinter.CTk):
         contador = 0
 
         while contador < cantidad_numeros:
-            numero = float(prompt("" , prompt="Ingrese un número:"))
+            numero =float(prompt("" , prompt="Ingrese un número:")) # type: ignore
+
             suma_acumulada += numero
             contador += 1
 
         promedio = suma_acumulada / cantidad_numeros
 
         self.txt_suma_acumulada.insert (0,suma_acumulada)
-        self.txt_promedio.insert (0,promedio)
+        self.txt_promedio.insert(0,promedio)
 
 
     

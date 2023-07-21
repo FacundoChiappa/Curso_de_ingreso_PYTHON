@@ -3,6 +3,7 @@ from tkinter.messagebox import showinfo as alert
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
+#Rising BTL. Empresa dedicada a la toma de datos para realizar estadísticas y censos nos pide realizar una carga de datos validada e ingresada por ventanas emergentes solamente (dialog prompt) y luego asignarla a cuadros de textos.
 
 class App(customtkinter.CTk):
 
@@ -38,52 +39,28 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        apellido = self.txt_apellido.get()
-        edad = self.txt_edad.get()
-        estado_civil = self.combobox_tipo.get()
-        legajo = self.txt_legajo.get()
+        validado = False
+        while not validado:
+            apellido = prompt("" , "Ingrese el apellido:")
+            edad = prompt("" ,"Ingrese la edad:")
+            estado = self.combobox_tipo.get()
+            legajo = prompt("" , "Ingrese el legajo:")
 
-        # Validación de datos
-        if not apellido:
-            alert("Error", "Debe ingresar el apellido.")
-            return
-
-        if not edad:
-            alert("Error", "Debe ingresar la edad.")
-            return
-        try:
-            edad = int(edad)
-        except ValueError:
-            alert("Error", "La edad debe ser un número entero.")
-            return
-        if edad < 18 or edad > 90:
-            alert("Error", "La edad debe estar entre 18 y 90 años.")
-            return
-
-        if not estado_civil:
-            alert("Error", "Debe seleccionar el estado civil.")
-            return
-
-        if not legajo:
-            alert("Error", "Debe ingresar el número de legajo.")
-            return
-        try:
-            legajo = int(legajo)
-        except ValueError:
-            alert("Error", "El número de legajo debe ser un número entero.")
-            return
-        if legajo < 1000 or legajo > 9999:
-            alert("Error", "El número de legajo debe ser de 4 cifras (sin ceros a la izquierda).")
-            return
-
-        # Asignación a cuadros de texto
-        self.txt_apellido.set_text(apellido)
-        self.txt_edad.set_text(str(edad))
-        self.combobox_tipo.set_text(estado_civil)
-        self.txt_legajo.set_text(str(legajo))
-
-        alert("Validación exitosa", "Los datos han sido validados y asignados correctamente.")
-
+            if apellido and edad and estado and legajo:
+                if not edad.isdigit() or int(edad) < 18 or int(edad) > 90:
+                    alert("Error", "La edad debe ser un número entre 18 y 90.")
+                elif not legajo.isdigit() or len(legajo) != 4 or legajo.startswith('0'):
+                    alert("Error", "El número de legajo debe ser numérico de 4 cifras sin ceros a la izquierda.")
+                else:
+                    self.txt_apellido.delete(0 , "end")
+                    self.txt_apellido.insert(0 , apellido)
+                    self.txt_edad.delete(0 , "end")
+                    self.txt_edad.insert(0 , edad)
+                    self.txt_legajo.delete(0 , "end")
+                    self.txt_legajo.insert(0 ,legajo)
+                    validado = True
+            else:
+                alert("Error", "Todos los campos son requeridos.")
 
 if __name__ == "__main__":
     app = App()

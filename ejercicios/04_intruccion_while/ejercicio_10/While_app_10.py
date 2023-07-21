@@ -40,7 +40,7 @@ class App(customtkinter.CTk):
             else:
                 cantidad_ceros += 1
 
-        diferencia = cantidad_positivos - cantidad_negativos
+        diferencia = abs(cantidad_positivos - cantidad_negativos)  #ABS DA VALOR ABSOLUTO, LO QUE PASO X PARENTESIS, DEVUELVE SIN SIGNO OSEA POSITIVO
 
         mensaje = f"Suma acumulada de negativos: {suma_negativos}\n"
         mensaje += f"Suma acumulada de positivos: {suma_positivos}\n"

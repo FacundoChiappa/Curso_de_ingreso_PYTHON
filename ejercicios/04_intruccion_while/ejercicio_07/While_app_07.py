@@ -35,6 +35,7 @@ class App(customtkinter.CTk):
         flag_cancelar= True
         suma_acumulada = 0
         contador = 0
+        promedio = 0
 
         while flag_cancelar:
             numero_ingresado= prompt("" , "Ingrese un numero")
@@ -48,7 +49,9 @@ class App(customtkinter.CTk):
         cantidad_numeros = contador
         promedio = suma_acumulada / cantidad_numeros
 
+        self.txt_suma_acumulada.insert (0 , "end")
         self.txt_suma_acumulada.insert (0,suma_acumulada)
+        self.txt_promedio.delete(0 , "end")
         self.txt_promedio.insert(0,promedio)
 
     

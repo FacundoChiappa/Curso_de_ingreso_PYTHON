@@ -22,16 +22,15 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         numero_elegido = int(prompt("" , prompt="Ingrese un número:"))  #type: ignore
-        lista_de_numeros=[]
         contador = 0
 
         for _ in range(numero_elegido):
             contador += 1
             match(numero_elegido % contador):
                 case 0:
-                    lista_de_numeros.append(contador)
+                    acumulador=(contador)
 
-        if len(lista_de_numeros) == 2:
+        if (contador) == 2:
             mensaje= f"El {numero_elegido} es un numero PRIMO"
         else:
             mensaje= f"El {numero_elegido} NO es un numero PRIMO"
